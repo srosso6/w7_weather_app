@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Weather App</title>
+    <link rel="stylesheet" type="text/css" href="normalize.css">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="lodash.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfERxvotuACmtrlTpUo675GubOeVf7pg0"></script>
+    <script src='city_weather.js'></script>
+    <script src='map.js'></script>
+    <script src='display_weather.js'></script>
+    <script src='app.js'></script>
+  </head>
+  <body>
+    <h1>Weather</h1>
+    <form id="form">
+      <label for="city">City:</label>
+      <input type="text" name="city" id="text-input" size="40" placeholder="e.g. London">
+      <button type="button" id="weather-btn">Get Weather</button>
+    </form>
+    <div id="map"></div>
+    <div id="curr-weather">
+      <img src="" id="icon">
+      <p class="curr-info-header"></p>
+      <p class="curr-info"></p>
+      <p class="curr-info-header"></p>
+      <p class="curr-info"></p>
+      <p class="curr-info-header"></p>
+      <p class="curr-info"></p>
+      <p class="curr-info-header"></p>
+      <p class="curr-info"></p>
+    </div>
+  </body>
+</html>
+
