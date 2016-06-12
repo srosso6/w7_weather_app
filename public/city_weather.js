@@ -1,6 +1,6 @@
 var CityWeather = function(city) {
   this.city = city;
-  // MY OWN ASYNCHRONOUS FUNCTION
+  // ASYNCHRONOUS FUNCTION
   this.getData = function(callType, callback) {
     var url = "http://api.openweathermap.org/data/2.5/" + callType + this.city + "&units=metric" + "&APPID=156603d8a8ea4d4155ec0d8335f5fe69";
     var request = new XMLHttpRequest();

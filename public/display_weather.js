@@ -1,6 +1,5 @@
 var DisplayWeather = function(weatherData) {
   this.weatherData = weatherData;
-  console.log(weatherData);
   this.description = function() {
     var desc = this.weatherData.weather[0]["description"];
     return _.startCase(desc);
@@ -15,6 +14,9 @@ var DisplayWeather = function(weatherData) {
     return _.round(speedImperial, 2) + "mph";
   };
   this.rainfall = function() {
+    if(!this.weatherData.rain) {
+      return "No rain in last 3 hours";
+    }
     if(this.weatherData.rain["1h"]) {
       var hour1 = this.weatherData.rain["1h"];
       return _.round(hour1, 2) + "mm (in last hour)";
@@ -25,9 +27,12 @@ var DisplayWeather = function(weatherData) {
   this.iconCode = function() {
     return this.weatherData.weather[0]["icon"];
   };
+  this.iconUrl = function() {
+    return "http://openweathermap.org/img/w/" + this.iconCode() + ".png"
+  };
   this.displayIcon = function() {
     var icon = document.getElementById("icon");
-    icon.setAttribute("src", "http://openweathermap.org/img/w/" + this.iconCode() + ".png");
+    icon.setAttribute("src", this.iconUrl());
   };
   this.displayInfo = function() {
     var info = document.querySelectorAll(".curr-info");
@@ -42,9 +47,3 @@ var DisplayWeather = function(weatherData) {
     info[3].innerText = this.rainfall();
   }
 }
-
-
-
-
-
-// wind speed in miles per hour

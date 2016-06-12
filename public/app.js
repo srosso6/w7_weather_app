@@ -1,64 +1,35 @@
 var main = function() {
-  document.getElementById("weather-btn").addEventListener("click", handleClick);
-  // inside clickhandler
-  // cityManager.updatecity(city)
 
-  // cityManager.onCityChange = function (weatherdata) { 
-    // weatherDisplayWidgert.update(weatherdata); }
-  //  
-  //}
+  var map = new Map({lat: 55.95, lng: -3.2}, 11);
+
+  var handleClick = function(map) {
+    var city = getCity();
+    localStorage.setItem("city", city);
+    var cityManager = new CityManager(map, city);
+    cityManager.changeCity();
+  };
+
+  var handleSubmit = function(event) {
+    event.preventDefault();
+    handleClick(map);
+  };
+
+  var getCity = function() {
+    var input = document.getElementById("text-input");
+    return input.value;
+  }
+
+  var loadLastCity = function() {
+    var city = localStorage.getItem("city");
+    document.getElementById("text-input").value = city;
+    handleClick(map);
+  }
+
   loadLastCity();
-}
 
-var loadLastCity = function() {
-  var city = localStorage.getItem("city");
-  document.getElementById("text-input").value = city;
-  handleClick();
-}
+  document.getElementById("weather-btn").addEventListener("click", handleClick);
 
-var handleClick = function() {
-  var city = getCity();
-  localStorage.setItem("city", city);
-  changeCity(city);
+  document.getElementById("form").addEventListener("submit", handleSubmit);
 }
-
-var getCity = function() {
-  var input = document.getElementById("text-input");
-  return input.value;
-}
-
-var changeCity = function(city) {
-  var cityWeather = new CityWeather(city);
-  cityWeather.getCurrentWeather(function(currCityWeather) {
-      createMap(currCityWeather);
-      var displayWeather = new DisplayWeather(currCityWeather);
-      displayWeather.displayIcon();
-      displayWeather.displayInfo();
-  });
-}
-
-var createMap = function(weatherData) {
-  var cityCoord = getCityCoord(weatherData);
-  var city = weatherData.name
-  var map = new Map(cityCoord, 11);
-  map.addMarker(cityCoord, city);
-  map.addInfoWindow(cityCoord, city);
-}
-
-var getCityCoord = function(weatherData) {
-  var coord = weatherData.coord;
-  return convertCoordForGoogle(coord);
-}
-
-var convertCoordForGoogle = function(coord) {
-  var googleCoord = { lat: coord["lat"], lng: coord["lon"] };
-  return googleCoord;
-}
-
-// var get5DayForecast = function(cityWeather) {
-//   cityWeather.get5DayForecast(function(cityWeatherForecast) {
-//     cityWeatherForecast;
-//   });
-// }
 
 window.onload = main;
