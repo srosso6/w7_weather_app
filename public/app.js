@@ -2,16 +2,17 @@ var main = function() {
 
   var map = new Map({lat: 55.95, lng: -3.2}, 11);
 
-  var handleClick = function(map) {
+  var handleClick = function() {
     var city = getCity();
     localStorage.setItem("city", city);
     var cityManager = new CityManager(map, city);
     cityManager.changeCity();
+    cityManager.createForecastChart();
   };
 
   var handleSubmit = function(event) {
     event.preventDefault();
-    handleClick(map);
+    handleClick();
   };
 
   var getCity = function() {
@@ -30,6 +31,7 @@ var main = function() {
   document.getElementById("weather-btn").addEventListener("click", handleClick);
 
   document.getElementById("form").addEventListener("submit", handleSubmit);
+
 }
 
 window.onload = main;

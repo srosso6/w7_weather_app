@@ -28,11 +28,6 @@ var Map = function(latLng, zoom) {
     }
     this.markers.length = 0;
   };
-  // this.bindClick = function(iconUrl) {
-  //   google.maps.event.addListener(this.googleMap, "click", function(event) {
-  //   this.addMarker({ lat: event.latLng.lat(), lng: event.latLng.lng(), iconUrl }, (this.markers.length +1));
-  //   }.bind(this));
-  // };
   this.addInfoWindow = function(latLng, title, iconUrl) {
     var marker = this.addMarker(latLng, title, iconUrl);
     var infowindow = new google.maps.InfoWindow( {

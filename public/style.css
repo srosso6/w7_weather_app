@@ -1,54 +1,93 @@
 body{
-  background: #FBFCFC;
+  background-color: rgb(50, 148, 178);
   font-family: 'Cabin', sans-serif;
-  color: #26787F;
+  color: #000;
 }
 
 h1 {
-/*  margin-top: 15px;*/
-  font-size: 1.5em;
-  text-shadow: 1px 1px 5px white;
+  margin-top: 20px;
+  margin-left: 50px;
+  margin-right: 16%;
+  margin-bottom: 0;
+  font-size: 3em;
+  text-shadow: 1px 1px 5px #fff;
   text-align: center;
-/*  margin-bottom: 10px;*/
-}
-
-#map {
-  width: 500px;
-  height: 500px;
   display: inline-block;
 }
 
+.main-header {
+  margin-bottom: 20px;
+}
+
+h2 {
+  text-shadow: 1px 1px 5px #fff;
+}
+
+#form,
+.main {
+  margin: 0 auto;
+  max-width: 80%;
+}
+
+#form {
+  display: inline-block;
+}
+
+.main {
+  margin: 0 auto;
+  border-radius: 5%;
+}
+
+#curr-weather {
+  display: inline-block;
+  background-color: rgb(255, 243, 88);
+  border: 2px solid #B22951;
+  border-radius: 5%;
+  padding: 10px 50px;
+  vertical-align: top;
+  margin-top: 34px;
+  margin-left: 100px;
+  margin-right: 75px;
+}
+
+img {
+  float: right;
+}
+
+#map {
+  width: 460px;
+  height: 460px;
+  display: inline-block;
+  border: 2px solid #B22951;
+}
+
 #weather-btn {
-  color: #26787F;
+  color: #000;
   cursor: pointer;
   display: inline-block;
   padding: 6px 12px;
   line-height: 1.5;
-  border: 2px solid #26787F;
+  border: 2px solid #B22951;
   border-radius: 4px;
   font-size: 14px;
   font-weight: 700;
-  background-color: rgba(38, 120, 127, 0.4);
-/*  margin: 0 auto;
-  margin-bottom: 0;
-  margin-top: 15px;*/
+  background-color: rgb(252, 84, 134);
 }
 
 #text-input {
   border-radius: 10%;
-  color: #26787F;
+  color: #000;
   cursor: pointer;
   display: inline-block;
   padding: 6px 12px;
   line-height: 1.5;
-  border: 2px solid #26787F;
+  border: 2px solid #B22951;
   border-radius: 4px;
   font-size: 14px;
   font-weight: 700;
-  background-color: rgba(38, 120, 127, 0.1);
-/*  margin: 0 auto;
+  background-color: #fff;
   margin-bottom: 15px;
-  margin-top: 5px;*/
+  margin-top: 5px;
 }
 
 #weather-btn:hover,
@@ -58,29 +97,14 @@ h1 {
 
 label {
   font-size: 20px;
-}
-
-#form,
-.main {
-  border: 2px solid #777;
-  margin: 0 auto;
-  max-width: 80%;
-/*  padding: 10px 10px;
-  padding-bottom: 25px;*/
-  background-color: rgba(38, 120, 127, 0.1);
-}
-
-
-#curr-weather {
-  display: inline-block;
-/*  padding: 10px 50px;*/
-}
-
-.main {
-  margin: 0 auto;
-  border-radius: 5%;
+  font-weight: 600;
 }
 
 .curr-info-header {
   font-weight: 600;
+}
+
+#chart {
+  margin-top: 30px;
+  margin-bottom: 30px;
 }

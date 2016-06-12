@@ -1,12 +1,13 @@
-var DisplayWeather = function(weatherData) {
+var DisplayCurrWeather = function(weatherData, city) {
   this.weatherData = weatherData;
+  this.city = _.startCase(city);
   this.description = function() {
     var desc = this.weatherData.weather[0]["description"];
     return _.startCase(desc);
   };
   this.temperature = function() {
     var temp = this.weatherData.main["temp"]
-    return _.round(temp, 2) +"&deg;C";
+    return _.round(temp, 2) + "&deg;C";
   };
   this.windSpeed = function() {
     var speedMetric = this.weatherData.wind["speed"];
@@ -17,12 +18,17 @@ var DisplayWeather = function(weatherData) {
     if(!this.weatherData.rain) {
       return "No rain in last 3 hours";
     }
-    if(this.weatherData.rain["1h"]) {
+    else if(this.weatherData.rain["1h"]) {
       var hour1 = this.weatherData.rain["1h"];
       return _.round(hour1, 2) + "mm (in last hour)";
     }
-    var hour3 = this.weatherData.rain["3h"];
-    return _.round(hour3, 2) + "mm (in last 3 hours)";
+    else if(this.weatherData.rain["3h"]) {
+      var hour3 = this.weatherData.rain["3h"];
+      return _.round(hour3, 2) + "mm (in last 3 hours)";
+    }
+    else {
+      return "No rain in last 3 hours";
+    }
   };
   this.iconCode = function() {
     return this.weatherData.weather[0]["icon"];
@@ -35,8 +41,10 @@ var DisplayWeather = function(weatherData) {
     icon.setAttribute("src", this.iconUrl());
   };
   this.displayInfo = function() {
+    var title = document.getElementById("title");
     var info = document.querySelectorAll(".curr-info");
     var headers = document.querySelectorAll(".curr-info-header");
+    title.innerText = this.city;
     headers[0].innerText = "Description:";
     info[0].innerText = this.description();
     headers[1].innerText = "Temperature:";

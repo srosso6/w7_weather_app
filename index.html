@@ -5,23 +5,29 @@
     <link rel="stylesheet" type="text/css" href="normalize.css">
     <link rel="stylesheet" type="text/css" href="style.css" />
     <script src="lodash.min.js"></script>
+    <script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfERxvotuACmtrlTpUo675GubOeVf7pg0"></script>
     <script src='city_weather.js'></script>
     <script src='map.js'></script>
-    <script src='display_weather.js'></script>
+    <script src='display_current_weather.js'></script>
+    <script src='display_weather_forecast.js'></script>
+    <script src='chart.js'></script>
     <script src='city_manager.js'></script>
     <script src='app.js'></script>
   </head>
   <body>
+    <div class="main-header">
     <h1>Weather</h1>
-    <form id="form">
-      <label for="city">City:</label>
-      <input type="text" name="city" id="text-input" size="40" placeholder="e.g. London">
-      <button type="button" id="weather-btn">Get Weather</button>
-    </form>
+      <form id="form">
+        <label for="city">City:</label><br>
+        <input type="text" name="city" id="text-input" size="40" placeholder="e.g. London">
+        <button type="button" id="weather-btn">Get Weather</button>
+      </form>
+    </div>
     <div class="main">
       <div id="curr-weather">
-        <h2>Current Weather</h2>
+        <h2>Current Weather in</h2>
+        <h2 id="title"></h2>
         <img src="" id="icon">
         <p class="curr-info-header"></p>
         <p class="curr-info"></p>
@@ -33,6 +39,7 @@
         <p class="curr-info"></p>
       </div>
       <div id="map"></div>
+      <div id="chart"></div>
     </div>
   </body>
 </html>

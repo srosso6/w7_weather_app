@@ -1,6 +1,7 @@
 var CityManager = function(map, city) {
   this.map = map;
   this.city = city;
+  this.cityWeather = new CityWeather(this.city);
   this.updateMap = function(weatherData, iconUrl) {
     var cityCoord = this.getCityCoord(weatherData);
     this.map.removeMarkers();
@@ -16,13 +17,18 @@ var CityManager = function(map, city) {
     return googleCoord;
   };
   this.changeCity = function() {
-    var cityWeather = new CityWeather(this.city);
-    cityWeather.getCurrentWeather(function(currCityWeather) {
-      var displayWeather = new DisplayWeather(currCityWeather);
+    this.cityWeather.getCurrentWeather(function(currCityWeather) {
+      var displayWeather = new DisplayCurrWeather(currCityWeather, this.city);
       displayWeather.displayIcon();
       displayWeather.displayInfo();
       var iconUrl = displayWeather.iconUrl();
       this.updateMap(currCityWeather, iconUrl);
+    }.bind(this));
+  };
+  this.createForecastChart = function() {
+    this.cityWeather.get5DayForecast(function(cityForecastWeather) {
+      var displayForecast = new DisplayWeatherForecast(cityForecastWeather, this.city);
+      displayForecast.createChart();
     }.bind(this));
   };
 };
