@@ -1,5 +1,6 @@
 body{
-  background-color: rgb(50, 148, 178);
+/*  background-color: rgb(50, 148, 178);*/
+  background-color: FFFFFF;
   font-family: 'Cabin', sans-serif;
   color: #000;
 }
@@ -40,13 +41,13 @@ h2 {
 
 #curr-weather {
   display: inline-block;
-  background-color: rgb(255, 243, 88);
+  background-color: rgb(229, 255, 221);
   border: 2px solid #B22951;
   border-radius: 5%;
-  padding: 10px 50px;
+  padding: 20px 80px;
   vertical-align: top;
-  margin-top: 34px;
-  margin-left: 100px;
+  margin-top: 14px;
+  margin-left: 70px;
   margin-right: 75px;
 }
 
@@ -107,4 +108,5 @@ label {
 #chart {
   margin-top: 30px;
   margin-bottom: 30px;
+  border: 2px solid #B22951;
 }
